@@ -12,6 +12,8 @@ import Foundation
 
 // Paste your X-Api-Key from ReadyPlayerMe Studio here
 let key = ""
+// Set image type to .jpg
+DefaultAvatarValues.kImageFormat = .jpg
 // Link to your cool .glb avatar model
 let randomUrl = "https://models.readyplayer.me/6361baf427dd6d429df5b5db.glb"
 // Configure resulting image parameters
@@ -21,9 +23,9 @@ let sampleConfig = AvatarParameters(expression: .lol, camera: .fullbody, pose: .
 let semaphore = DispatchSemaphore(value: 0)
 
 // Calling library function.
-//RPM.avatarFromId(randomUrl, config: sampleConfig) { pngData, error in
-RPM.avatarFromUrl(randomUrl, config: sampleConfig) { pngData, error in
-    if let safeData = pngData {
+//RPM.avatarFromId(randomUrl, config: sampleConfig) { imageData, error in
+RPM.avatarFromUrl(randomUrl, config: sampleConfig) { imageData, error in
+    if let safeData = imageData {
         print(safeData)
     } else if let safeError = error {
         print(safeError)

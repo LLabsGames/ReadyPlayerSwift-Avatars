@@ -44,12 +44,12 @@ import Foundation
 //
 //  Avatar file format
 //  All 3D avatars are delivered in GLB format.
-//  The API returns standardized .glb or .png files for the 3D and 2D avatars, or JSON-encoded responses. Only default HTTP response codes are used.
+//  The API returns standardized .glb or .jpg/.png files for the 3D and 2D avatars, or JSON-encoded responses. Only default HTTP response codes are used.
 //  GLB ​is a compressed binary version of a (JSON-based) GLTF file and includes all of the elements that comprise a 3D avatar model, such as materials, meshes, node hierarchy, and cameras. GLB files are compact, represent complete scenes, and load fast. You can read more about GLB and glTF https://docs.fileformat.com/3d/glb/.
 //  Download a https://api.readyplayer.me/v1/avatars/6185a4acfb622cf1cdc49348.glb and open it in any 3D viewer or app to see the details.
 
 public class RPM {
-    public typealias RPMCompletion = (_ pngData: Data?, _ error: Error?) -> Void
+    public typealias RPMCompletion = (_ imageData: Data?, _ error: Error?) -> Void
     
     static private var dataTask: URLSessionDataTask?
     static private let session: URLSession = URLSession.shared
@@ -68,7 +68,8 @@ public class RPM {
     }
     
     private static func avatar(id: String, config: AvatarParameters, completion: @escaping RPMCompletion) {
-        let apiUrlString: String = "https://\(DefaultAvatarValues.kUrlBase)/\(id).png"
+        let fileFormat = config.format?.rawValue ?? DefaultAvatarValues.kImageFormat.rawValue
+        let apiUrlString: String = "https://\(DefaultAvatarValues.kUrlBase)/\(id).\(fileFormat)"
         do {
             let reqTimeout: TimeInterval = TimeInterval(DefaultAvatarValues.kTimeOutInterval)
             let policy: URLRequest.CachePolicy = .useProtocolCachePolicy

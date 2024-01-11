@@ -53,9 +53,9 @@ let avatarUrl = "<Your Avatar URL>"
 let config = AvatarParameters(expression: .lol, camera: .fullbody, pose: .powerStance, apiKey: apiKey)
 
 // Fetch and process the avatar
-ReadyPlayerSwift.avatarFromUrl(avatarUrl, config: config) { pngData, error in
-    if let data = pngData {
-        // Handle the received PNG data
+ReadyPlayerSwift.avatarFromUrl(avatarUrl, config: config) { imageData, error in
+    if let data = imageData {
+        // Handle the received image data
     } else if let err = error {
         // Handle the error
         print(err)

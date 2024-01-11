@@ -77,6 +77,10 @@ public enum BlendShape: Codable {
     }
 }
 
+public enum AvatarFormat: String, Codable, CaseIterable {
+    case png, jpg
+}
+
 public enum RpmError: Error {
     case configEncodingError
     case urlBuildingError

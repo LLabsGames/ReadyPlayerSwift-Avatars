@@ -6,16 +6,18 @@
 //
 
 public struct DefaultAvatarValues {
-    static public let kDefaultSize:     Int = 1024 // 256 / 512 / 1024 - Pixels;
-    static public let kDefaultQuality:  Int = 100  // Zero to 100 - Quality value;
-    static public let kTimeOutInterval: Int = 60   // Any value - Seconds.
-    static public let kUrlBase: String = "models.readyplayer.me"
-    static public let kGetMethodName: String = "GET"
-    static public let kRetryLimit: Int = 1
+    static public var kDefaultSize:     Int = 1024 // 256 / 512 / 1024 - Pixels;
+    static public var kDefaultQuality:  Int = 100  // Zero to 100 - Quality value;
+    static public var kTimeOutInterval: Int = 60   // Any value - Seconds.
+    static public var kUrlBase: String = "models.readyplayer.me"
+    static public var kGetMethodName: String = "GET"
+    static public var kImageFormat: AvatarFormat = .png
+    static public var kRetryLimit: Int = 1
 }
 
 public struct AvatarParameters: Codable {
     public let apiKey: String?            // X-API-Key from Studio;
+    public let format: AvatarFormat?
     public let expression: Expression?    // Avatar facial expression;
     public let pose: Pose?                // Avatars pose
     public let blendShapes: [BlendShape]? // Map of 3D meshes to their blend shapes;
@@ -46,6 +48,7 @@ public struct AvatarParameters: Codable {
         self.apiKey        = apiKey
         self.uat           = nil
         self.cacheControl  = nil
+        self.format        = DefaultAvatarValues.kImageFormat
     }
     
     public init(from decoder: Decoder) throws {
@@ -61,6 +64,7 @@ public struct AvatarParameters: Codable {
             expression = try values.decodeIfPresent(Expression.self, forKey: .expression)
             uat = try values.decodeIfPresent(String.self, forKey: .uat)
             blendShapes = try values.decodeIfPresent([BlendShape].self, forKey: .blendShapes)
+            format = DefaultAvatarValues.kImageFormat
         } catch {
             fatalError("🚨 AvatarParameters init from decoder error: \(error.localizedDescription)")
         }

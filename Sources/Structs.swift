@@ -12,7 +12,7 @@ public struct DefaultAvatarValues {
     static public var kUrlBase: String = "models.readyplayer.me"
     static public var kGetMethodName: String = "GET"
     static public var kImageFormat: AvatarFormat = .png
-    static public var kBackgroundColor: RGBColor? = nil
+    static public var kBackgroundColor: RGBColor? = .firm
     static public var kRetryLimit: Int = 1
 }
 

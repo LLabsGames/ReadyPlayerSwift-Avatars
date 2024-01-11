@@ -69,7 +69,7 @@ public enum BlendShape: Codable {
     
     case shape(name: String, value: Float)
     
-    var rawValue: RawValue {
+    public var rawValue: RawValue {
         switch self {
         case .shape(let name, let value):
             return "blendShapes[\(name)]=" + String(format: "%.1f", value)

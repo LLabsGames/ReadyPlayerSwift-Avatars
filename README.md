@@ -70,4 +70,4 @@ Contributions are welcome. Please feel free to contribute by opening issues or s
 
 ## License
 
-ReadyPlayerSwift is available under [The](https://unlicense.org) [Unlicense](https://unlicense.org). See the LICENSE file for more info.
+ReadyPlayerSwift is available under the [Unlicense](https://unlicense.org). See the LICENSE file for more info.

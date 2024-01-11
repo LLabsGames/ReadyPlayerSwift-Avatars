@@ -21,7 +21,7 @@ public enum Camera: String, Codable, CaseIterable {
 }
 
 public enum RGBColor: Codable, CaseIterable {
-    typealias RawValue = String
+    public typealias RawValue = String
     
     case rgb(r: Int, g: Int, b: Int)
     case violet // 148,   0, 211 - #9400D3
@@ -34,7 +34,7 @@ public enum RGBColor: Codable, CaseIterable {
     case white  // 255, 255, 255 - #FFFFFF
     case black  //   0,   0,   0 - #000000
     
-    var rawValue: RawValue {
+    public var rawValue: RawValue {
         switch self {
         case .rgb(let r, let g, let b):
             return "\(  r),\(  g),\(  b)"
@@ -65,7 +65,7 @@ public enum RGBColor: Codable, CaseIterable {
 }
 
 public enum BlendShape: Codable {
-    typealias RawValue = String
+    public typealias RawValue = String
     
     case shape(name: String, value: Float)
     

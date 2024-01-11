@@ -14,8 +14,8 @@ public struct DefaultAvatarValues {
     static public let kRetryLimit: Int = 1
 }
 
-public struct AvatarParameters: Encodable {
-    let apiKey: String             // X-API-Key from Studio;
+public struct AvatarParameters: Codable {
+    let apiKey: String?            // X-API-Key from Studio;
     let expression: Expression?    // Avatar facial expression;
     let pose: Pose?                // Avatars pose
     let blendShapes: [BlendShape]? // Map of 3D meshes to their blend shapes;
@@ -46,6 +46,24 @@ public struct AvatarParameters: Encodable {
         self.apiKey        = apiKey
         self.uat           = nil
         self.cacheControl  = nil
+    }
+    
+    public init(from decoder: Decoder) throws {
+        do {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            apiKey = nil
+            cacheControl = try values.decodeIfPresent(Bool.self, forKey: .cacheControl)
+            pose = try values.decodeIfPresent(Pose.self, forKey: .pose)
+            camera = try values.decodeIfPresent(Camera.self, forKey: .camera)
+            size = try values.decodeIfPresent(Int.self, forKey: .size) ?? DefaultAvatarValues.kDefaultSize
+            quality = try values.decodeIfPresent(Int.self, forKey: .quality) ?? DefaultAvatarValues.kDefaultQuality
+            background = try values.decodeIfPresent(RGBColor.self, forKey: .background)
+            expression = try values.decodeIfPresent(Expression.self, forKey: .expression)
+            uat = try values.decodeIfPresent(String.self, forKey: .uat)
+            blendShapes = try values.decodeIfPresent([BlendShape].self, forKey: .blendShapes)
+        } catch {
+            fatalError("🚨 AvatarParameters init from decoder error: \(error.localizedDescription)")
+        }
     }
     
     public func encode(to encoder: Encoder) throws {

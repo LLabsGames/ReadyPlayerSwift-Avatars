@@ -80,7 +80,9 @@ public class RPM {
             #endif
             var request = URLRequest(url: URL, cachePolicy: policy, timeoutInterval: reqTimeout)
             request.httpMethod = DefaultAvatarValues.kGetMethodName
-            request.allHTTPHeaderFields = ["x-api-key": config.apiKey]
+            if let key = config.apiKey {
+                request.allHTTPHeaderFields = ["x-api-key": key]
+            }
             RPM.dataTask = RPM.session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
                 if (error != nil) {
                     if RPM.connectionLostRetryCount < DefaultAvatarValues.kRetryLimit {

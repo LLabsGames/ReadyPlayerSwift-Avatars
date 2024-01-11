@@ -1,16 +1,16 @@
 <p align="center">
-    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.9+-orange.svg" alt="Swift Version" /></a>
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.8.1+-orange.svg" alt="Swift Version" /></a>
     <a href="https://swift.org/download/"><img src="https://img.shields.io/badge/Available-SPM-orange.svg" alt="Platform" /></a>
 </p>
 
 # ReadyPlayerSwift
 
-ReadyPlayerSwift is a Swift package that is providing a wrapper for Ready Player Me [REST](https://docs.readyplayer.me/ready-player-me/api-reference/rest-api) [API](https://docs.readyplayer.me/ready-player-me/api-reference/rest-api). It simplifies the process of downloading 2D representations of 3D avatar models with various parameters. This package is compatible with any Swift-supported platform and is built using the Swift 5.9 toolchain.
+ReadyPlayerSwift is a Swift package that is providing a wrapper for Ready Player Me [REST](https://docs.readyplayer.me/ready-player-me/api-reference/rest-api) [API](https://docs.readyplayer.me/ready-player-me/api-reference/rest-api). It simplifies the process of downloading 2D representations of 3D avatar models with various parameters. This package is compatible with any Swift-supported platform and is built using the Swift 5.8.1+ toolchain.
 
 ## Requirements
 
 - iOS / iPadOS / macOS / tvOS / watchOS / Linux / Windows (Swift-compatible platforms)
-- Swift 5.9+
+- Swift 5.8.1+
 - Xcode (latest AppStore version recommended)
 
 ## Installation

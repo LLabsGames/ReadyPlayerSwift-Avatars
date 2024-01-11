@@ -10,9 +10,9 @@ public enum Expression: String, Codable, CaseIterable {
 }
 
 public enum Pose: String, Codable, CaseIterable {
+    case standing    = "standing"
     case powerStance = "power-stance"
     case relaxed     = "relaxed"
-    case standing    = "standing"
     case thumbsUp    = "thumbs-up"
 }
 

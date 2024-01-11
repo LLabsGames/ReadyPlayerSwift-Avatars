@@ -24,6 +24,7 @@ public enum RGBColor: Codable, CaseIterable {
     public typealias RawValue = String
     
     case rgb(r: Int, g: Int, b: Int)
+    case firm   //  43,  46,  57 - RPM Firm Color
     case violet // 148,   0, 211 - #9400D3
     case indigo //  75,   0, 130 - #4B0082
     case blue   //   0,   0, 255 - #0000FF
@@ -38,6 +39,8 @@ public enum RGBColor: Codable, CaseIterable {
         switch self {
         case .rgb(let r, let g, let b):
             return "\(  r),\(  g),\(  b)"
+        case .firm:
+            return "\( 43),\( 46),\( 57)"
         case .violet:
             return "\(148),\(  0),\(211)"
         case .indigo:
@@ -60,7 +63,7 @@ public enum RGBColor: Codable, CaseIterable {
     }
     
     static public var allCases: [RGBColor] {
-        return [.white, .black, .red, .orange, .yellow, .green, .blue, .indigo, .violet]
+        return [.firm, .white, .black, .red, .orange, .yellow, .green, .blue, .indigo, .violet]
     }
 }
 

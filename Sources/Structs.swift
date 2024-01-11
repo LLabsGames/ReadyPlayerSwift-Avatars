@@ -12,6 +12,7 @@ public struct DefaultAvatarValues {
     static public var kUrlBase: String = "models.readyplayer.me"
     static public var kGetMethodName: String = "GET"
     static public var kImageFormat: AvatarFormat = .png
+    static public var kBackgroundColor: RGBColor? = nil
     static public var kRetryLimit: Int = 1
 }
 
@@ -24,7 +25,7 @@ public struct AvatarParameters: Codable {
     public let camera: Camera?            // Camera preset;
     public let quality: Int               // Image compression quality;
     public let size: Int                  // Image width and height;
-    public let background: RGBColor?      // Background color value;
+    public let background: String?        // Background color value;
     public let uat: String?               // User Avatar Timestamp;
     public let cacheControl: Bool?        // Uses custom Cache-Control header.
     
@@ -44,7 +45,7 @@ public struct AvatarParameters: Codable {
         self.camera        = camera
         self.quality       = quality
         self.size          = size
-        self.background    = background
+        self.background    = background?.rawValue
         self.apiKey        = apiKey
         self.uat           = nil
         self.cacheControl  = nil
@@ -60,7 +61,7 @@ public struct AvatarParameters: Codable {
             camera = try values.decodeIfPresent(Camera.self, forKey: .camera)
             size = try values.decodeIfPresent(Int.self, forKey: .size) ?? DefaultAvatarValues.kDefaultSize
             quality = try values.decodeIfPresent(Int.self, forKey: .quality) ?? DefaultAvatarValues.kDefaultQuality
-            background = try values.decodeIfPresent(RGBColor.self, forKey: .background)
+            background = try values.decodeIfPresent(String.self, forKey: .background)
             expression = try values.decodeIfPresent(Expression.self, forKey: .expression)
             uat = try values.decodeIfPresent(String.self, forKey: .uat)
             blendShapes = try values.decodeIfPresent([BlendShape].self, forKey: .blendShapes)

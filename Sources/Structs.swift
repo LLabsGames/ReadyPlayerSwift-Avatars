@@ -15,16 +15,16 @@ public struct DefaultAvatarValues {
 }
 
 public struct AvatarParameters: Codable {
-    let apiKey: String?            // X-API-Key from Studio;
-    let expression: Expression?    // Avatar facial expression;
-    let pose: Pose?                // Avatars pose
-    let blendShapes: [BlendShape]? // Map of 3D meshes to their blend shapes;
-    let camera: Camera?            // Camera preset;
-    let quality: Int               // Image compression quality;
-    let size: Int                  // Image width and height;
-    let background: RGBColor?      // Background color value;
-    let uat: String?               // User Avatar Timestamp;
-    let cacheControl: Bool?        // Uses custom Cache-Control header.
+    public let apiKey: String?            // X-API-Key from Studio;
+    public let expression: Expression?    // Avatar facial expression;
+    public let pose: Pose?                // Avatars pose
+    public let blendShapes: [BlendShape]? // Map of 3D meshes to their blend shapes;
+    public let camera: Camera?            // Camera preset;
+    public let quality: Int               // Image compression quality;
+    public let size: Int                  // Image width and height;
+    public let background: RGBColor?      // Background color value;
+    public let uat: String?               // User Avatar Timestamp;
+    public let cacheControl: Bool?        // Uses custom Cache-Control header.
     
     public enum CodingKeys: String, CodingKey {
         case cacheControl, pose, camera, size, quality
